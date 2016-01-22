@@ -1,0 +1,2 @@
+[osx]
+seeruk-macbook-pro.local    ansible_connection=local

@@ -1,0 +1,7 @@
+[user]
+        name = Elliot Wright
+        email = wright.elliot@gmail.com
+[core]
+        excludesfile = ~/.gitignore_global
+[push]
+        default = current
