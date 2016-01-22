@@ -1,5 +1,5 @@
 ---
 - hosts: osx
-  # roles:
-  #   - brew
-  #   - git
+  roles:
+    - brew
+    - git

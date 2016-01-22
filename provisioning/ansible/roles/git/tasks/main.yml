@@ -1,0 +1,9 @@
+---
+- name: Install
+  homebrew: name=git state=present
+
+- name: Install > Global Config File
+  template: src=../templates/gitconfig.j2 dest=~/.gitconfig
+
+- name: Install > Global Ignore File
+  template: src=../templates/gitignore_global.j2 dest=~/.gitignore_global

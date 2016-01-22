@@ -1,0 +1,3 @@
+---
+- name: Update & Upgrade
+  homebrew: update_homebrew=yes upgrade_all=no
