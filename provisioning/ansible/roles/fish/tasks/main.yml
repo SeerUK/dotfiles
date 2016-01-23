@@ -1,0 +1,35 @@
+---
+- name: Install
+  homebrew: name=fish state=present
+
+- name: Create > Shell Reference
+  lineinfile: dest=/etc/shells regexp='^\/usr\/local\/bin\/fish' line='/usr/local/bin/fish'
+  become: true
+
+- name: Create > Directories
+  file: path=~/.config/{{ item }} state=directory mode=0755
+  with_items:
+    - fish
+    - omf
+
+- name: Clone > Oh-my-fish
+  git: repo=https://github.com/oh-my-fish/oh-my-fish.git dest=~/.local/share/omf
+
+- name: Install > Fish Configuration
+  template: src=../templates/config.fish.j2 dest=~/.config/fish/config.fish
+
+- name: Install > Oh-my-fish Bundle Configuration
+  template: src=../templates/bundle.j2 dest=~/.config/omf/bundle
+
+- name: Install > Oh-my-fish Theme Configuration
+  template: src=../templates/theme.j2 dest=~/.config/omf/theme
+
+- name: Install > Oh-my-fish Theme
+  synchronize: src=../files/themes/seer dest=~/.local/share/omf/themes
+
+- name: Installing fish themes/packages
+  command: fish -c "omf install"
+  ignore_errors: yes
+
+- name: Echo > Info
+  debug: msg="Set fish as default shell with chsh -s /usr/local/bin/fish"

@@ -1,0 +1,5 @@
+function fish_right_prompt -d 'bobthefish is all about the right prompt'
+  set_color normal
+  date
+  set_color normal
+end

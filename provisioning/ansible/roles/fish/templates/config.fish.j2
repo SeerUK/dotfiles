@@ -1,0 +1,35 @@
+# Path to Oh My Fish install.
+set -gx OMF_PATH ~/.local/share/omf
+
+# Customize Oh My Fish configuration path.
+set -gx OMF_CONFIG ~/.config/omf
+
+# Load oh-my-fish configuration.
+source $OMF_PATH/init.fish
+
+ulimit -n 10240
+
+alias ls "gls"
+alias ll "ls -lah --group-directories-first --color"
+
+# Git Aliases
+alias ga "git add"
+alias gd "git diff"
+alias gc "git commit"
+alias gco "git checkout"
+alias gp "git push"
+alias gb "git branch"
+alias grba "git rebase --abort"
+alias grbc "git rebase --continue"
+alias gl "git log"
+alias gu "git up"
+alias gf "git fetch"
+alias gpu "git pull"
+alias gs "git status"
+alias gr "git reset"
+alias gst "git stash"
+alias gcl "git clone"
+alias gm "git merge"
+
+# NVM
+alias nvm "bass source ~/.nvm/nvm.sh ';' nvm"
