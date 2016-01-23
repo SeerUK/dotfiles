@@ -1,3 +1,49 @@
 ---
 - name: Update & Upgrade
   homebrew: update_homebrew=yes upgrade_all=no
+
+- name: Install > Pacakges w/o Options
+  homebrew: name={{ item }} state=present
+  with_items:
+  - binutils
+  - coreutils
+  - diffutils
+  - gawk
+  - gnutls
+  - gpatch
+  - gzip
+  - less
+  - m4
+  - make
+  - nano
+  - openssh
+  - python
+  - rsync
+  - screen
+  - unzip
+  - watch
+  - wget
+
+- name: Install > Vim
+  homebrew: name=vim state=present install_options=override-system-vi
+
+- name: Install > MacVim
+  homebrew: name=macvim state=present install_options=override-system-vim,custom-system-icons
+
+- name: Install > GNU-indent
+  homebrew: name=gnu-indent state=present install_options=with-default-names
+
+- name: Install > GNU-sed
+  homebrew: name=gnu-sed state=present install_options=with-default-names
+
+- name: Install > GNU-tar
+  homebrew: name=gnu-tar state=present install_options=with-default-names
+
+- name: Install > GNU-which
+  homebrew: name=gnu-which state=present install_options=with-default-names
+
+- name: Install > FindUtils
+  homebrew: name=findutils state=present install_options=with-default-names
+
+- name: Install > Grep
+  homebrew: name=grep state=present install_options=with-default-names
