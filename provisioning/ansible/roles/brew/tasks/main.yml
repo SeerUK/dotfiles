@@ -2,6 +2,9 @@
 - name: Update & Upgrade
   homebrew: update_homebrew=yes upgrade_all=no
 
+- name: Install > Tap 'homebrew/dupes'
+  homebrew_tap: tap=homebrew/dupes state=present
+
 - name: Install > Pacakges w/o Options
   homebrew: name={{ item }} state=present
   with_items:
