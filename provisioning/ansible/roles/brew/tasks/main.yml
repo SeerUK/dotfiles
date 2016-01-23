@@ -1,5 +1,5 @@
 ---
-- name: Update & Upgrade
+- name: Update
   homebrew: update_homebrew=yes upgrade_all=no
 
 - name: Install > Tap 'homebrew/dupes'
