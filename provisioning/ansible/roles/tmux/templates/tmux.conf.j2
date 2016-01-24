@@ -1,0 +1,53 @@
+set -g utf8 on
+set -g status-utf8 on
+
+set -g default-terminal "screen-256color"
+set -g status-bg default
+set -g status-fg black
+
+set -g base-index 1
+
+# Status
+set -g status-interval 1
+set -g status-right " %T "
+set -g status-left-length 30
+set -g status-left " #H "
+set -g status-justify centre
+set -g window-status-format "[ #I #W ]"
+set -g window-status-current-format "#[fg=yellow][ #I #W ]#[fg=default]"
+set -g window-status-separator " "
+
+# Sane scrolling
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+set -g mouse-utf8 on
+set -g mouse on
+
+set -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+
+bind -n WheelUpPane     select-pane -t= \; copy-mode -e \; send-keys -M
+bind -n WheelDownPane   select-pane -t= \;                 send-keys -M
+bind -n C-WheelUpPane   select-pane -t= \; copy-mode -e \; send-keys -M
+
+bind -t vi-copy    C-WheelUpPane   halfpage-up
+bind -t vi-copy    C-WheelDownPane halfpage-down
+bind -t emacs-copy C-WheelUpPane   halfpage-up
+bind -t emacs-copy C-WheelDownPane halfpage-down
+
+set-window-option -g xterm-keys on
+
+# List of plugins
+# Supports `github_username/repo` or full git URLs
+set -g @tpm_plugins "              \
+  tmux-plugins/tpm                 \
+  tmux-plugins/tmux-sensible       \
+  tmux-plugins/tmux-resurrect      \
+"
+# Other examples:
+# github_username/plugin_name    \
+# git@github.com/user/plugin     \
+# git@bitbucket.com/user/plugin  \
+
+# initializes TMUX plugin manager
+run-shell ~/.tmux/plugins/tpm/tpm

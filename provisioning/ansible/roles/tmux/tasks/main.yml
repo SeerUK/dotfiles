@@ -1,0 +1,12 @@
+---
+- name: Install
+  homebrew: name=tmux state=present
+
+- name: Clone > TPM
+  git: repo=https://github.com/tmux-plugins/tpm.git dest=~/.tmux/plugins/tpm
+
+- name: Install > Tmux Configuration
+  template: src=../templates/tmux.conf.j2 dest=~/.tmux.conf
+
+- name: Echo > Info
+  debug: msg="Remember to install plugins with 'prefix + I' whilst in Tmux"
